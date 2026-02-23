@@ -1132,32 +1132,39 @@ const ELEMENTS_ALL = [...new Set(DB.flatMap(s=>Object.keys(s.comp)))];
 const rangeStr = (lo,hi) => lo===hi ? `${lo}` : lo===0 ? `≤${hi}` : `${lo}–${hi}`;
 
 function generateApp(s) {
-  const parts = [];
   const std = s.standard || "";
-  if (std.includes("5520")) parts.push("Котлы, сосуды давления, теплообменники (ГОСТ 5520)");
-  else if (std.includes("27772")) parts.push("Стальные строительные конструкции (ГОСТ 27772)");
-  else if (std.includes("19281")) parts.push("Фасонный и листовой прокат повышенной прочности (ГОСТ 19281)");
-  else if (std.includes("1050")) parts.push("Качественный сортовой и калиброванный прокат (ГОСТ 1050)");
-  else if (std.includes("4543")) parts.push("Легированный сортовой и калиброванный прокат (ГОСТ 4543)");
-  else if (std.includes("5632")) parts.push("Нержавеющие, жаростойкие и жаропрочные стали (ГОСТ 5632)");
-  else if (std.includes("20072")) parts.push("Жаропрочные стали и сплавы (ГОСТ 20072)");
-  else if (std.includes("380")) parts.push("Углеродистая сталь обыкновенного качества (ГОСТ 380)");
-  else if (std.includes("14959")) parts.push("Рессорно-пружинная сталь (ГОСТ 14959)");
-  else if (std.includes("EN 10025")) parts.push("Горячекатаный конструкционный прокат (EN 10025)");
-  else if (std.includes("EN 10088")) parts.push("Нержавеющие стали — листы и полосы (EN 10088)");
-  else if (std.includes("EN 10028")) parts.push("Листовая сталь для сосудов давления (EN 10028)");
-  else if (std.includes("EN 10149")) parts.push("Горячекатаный плоский прокат повышенной прочности (EN 10149)");
-  else if (std.includes("GB/T 1591")) parts.push("Низколегированный конструкционный прокат повышенной прочности (GB/T 1591)");
-  else if (std.includes("GB/T 700")) parts.push("Углеродистый конструкционный прокат общего назначения (GB/T 700)");
-  else if (std.includes("GB/T 3077")) parts.push("Легированный конструкционный прокат (GB/T 3077)");
-  else if (std.includes("GB/T 4237")) parts.push("Нержавеющий горячекатаный лист и полоса (GB/T 4237)");
-  else if (std.includes("ASTM A36")) parts.push("Конструкционный углеродистый прокат (ASTM A36)");
-  else if (std.includes("ASTM A572")) parts.push("Высокопрочный низколегированный прокат (ASTM A572)");
-  else if (std.includes("ASTM A240")) parts.push("Нержавеющие листы и полосы (ASTM A240)");
-  else if (std.includes("ASTM A516")) parts.push("Листовая сталь для сосудов давления (ASTM A516)");
-  else if (std.includes("ASTM A283")) parts.push("Углеродистый листовой прокат (ASTM A283)");
-  if (s.products && s.products.length) parts.push(s.products.join(", "));
-  return parts.length ? parts.join(". ") + "." : "";
+  if (std.includes("5520")) return "Котлы, сосуды давления, теплообменники";
+  if (std.includes("27772")) return "Стальные строительные конструкции";
+  if (std.includes("19281")) return "Фасонный и листовой прокат повышенной прочности";
+  if (std.includes("1050")) return "Сортовой и калиброванный прокат";
+  if (std.includes("4543")) return "Легированный сортовой и калиброванный прокат";
+  if (std.includes("5632")) return "Нержавеющие, жаростойкие и жаропрочные стали";
+  if (std.includes("20072")) return "Жаропрочные стали и сплавы";
+  if (std.includes("380")) return "Углеродистая сталь обыкновенного качества";
+  if (std.includes("14959")) return "Рессорно-пружинная сталь";
+  if (std.includes("5521")) return "Прокат для судостроения";
+  if (std.includes("EN 10025")) return "Горячекатаный конструкционный прокат";
+  if (std.includes("EN 10088")) return "Нержавеющие стали — листы и полосы";
+  if (std.includes("EN 10083")) return "Сортовой прокат для термической обработки";
+  if (std.includes("EN 10028")) return "Листовая сталь для сосудов давления";
+  if (std.includes("EN 10149")) return "Горячекатаный плоский прокат повышенной прочности";
+  if (std.includes("GB/T 1591")) return "Низколегированный конструкционный прокат повышенной прочности";
+  if (std.includes("GB/T 700")) return "Углеродистый конструкционный прокат общего назначения";
+  if (std.includes("GB/T 3077")) return "Легированный конструкционный прокат";
+  if (std.includes("GB/T 4237")) return "Нержавеющий горячекатаный лист и полоса";
+  if (std.includes("GB/T 1220")) return "Нержавеющий сортовой прокат";
+  if (std.includes("GB/T 3274")) return "Толстолистовой и широкополосный прокат";
+  if (std.includes("GB/T 713")) return "Листовая сталь для котлов и сосудов давления";
+  if (std.includes("GB/T 8162")) return "Бесшовные трубы общего назначения";
+  if (std.includes("ASTM A36")) return "Конструкционный углеродистый прокат";
+  if (std.includes("ASTM A572")) return "Высокопрочный низколегированный прокат";
+  if (std.includes("ASTM A240")) return "Нержавеющие листы и полосы";
+  if (std.includes("ASTM A516")) return "Листовая сталь для сосудов давления";
+  if (std.includes("ASTM A283")) return "Углеродистый листовой прокат";
+  if (std.includes("JIS G4303")) return "Нержавеющий сортовой прокат";
+  if (std.includes("JIS G3101")) return "Углеродистый горячекатаный прокат";
+  if (std.includes("JIS G3106")) return "Сварной конструкционный прокат";
+  return "";
 }
 
 function generateDiff(base, other) {
@@ -1960,8 +1967,10 @@ function SteelReference() {
                       {s.status==="replaced" && <span title="Стандарт заменён" style={{fontSize:12,opacity:0.6}}>⚠</span>}
                     </div>
                   </div>
-                  <div style={{fontSize:10.5,color:s.status==="replaced"?t.muted:t.fg3,marginTop:2}}><span style={{fontWeight:600,fontSize:9.5,letterSpacing:"0.03em"}}>{s.country}</span> {s.status==="replaced"?`⚠ Архив ${s.standard}`:s.standard}</div>
-                  <div style={{fontSize:10,color:t.fg4,marginTop:1}}>{generateApp(s)||s.app}</div>
+                  <div style={{fontSize:10.5,color:s.status==="replaced"?t.muted:t.fg3,marginTop:2}}>{s.status==="replaced"
+                    ?<><span style={{fontWeight:600,fontSize:9.5,letterSpacing:"0.03em"}}>{s.country}</span> ⚠ Архив {s.standard}</>
+                    :<><span style={{fontWeight:600,fontSize:9.5,letterSpacing:"0.03em"}}>{s.country}</span> {s.standard}{generateApp(s)?` — ${generateApp(s)}`:""}</>
+                  }</div>
                 </div>
               );
             })}
@@ -2010,8 +2019,8 @@ function SteelReference() {
                     </div>
                     <div style={{fontSize:12,color:t.fg2}}>
                       <span className="filter-link" onClick={()=>{setQuery(sel.standard);setCompResults(null);}}>{sel.standard}</span>
+                      {generateApp(sel) && <span style={{color:t.fg3}}> — {generateApp(sel)}</span>}
                     </div>
-                    <div style={{fontSize:11.5,color:t.fg3,marginTop:2}}>{generateApp(sel)||sel.app}</div>
                     {sel.status==="replaced" && (()=>{
                       const repl = DB.find(x=>x.id===sel.replacedBy);
                       return (
@@ -2364,9 +2373,6 @@ function SteelReference() {
                       <div style={{fontSize:13,color:t.fg2,lineHeight:1.6}}>{sel.products.join(", ")}</div>
                     </Section>
                   )}
-                  <Section title="Применение">
-                    <div style={{fontSize:13,color:t.fg2,lineHeight:1.6}}>{generateApp(sel)||sel.app}</div>
-                  </Section>
                   </>}
                 </div>
               )
@@ -2419,7 +2425,7 @@ td{padding:4px 8px;border:1px solid #ddd;font-size:10.5px}.lbl{font-weight:600;b
                           h += `<table><tr class="sec"><td colspan="${n+1}">Общие сведения</td></tr>`;
                           h += `<tr><th></th>${cmpSteels.map((s,i)=>`<th>${i===bi?"★ ":""}${s.country} ${s.name}<br><span class="sub">${s.standard}</span></th>`).join("")}</tr>`;
                           h += `<tr><td class="lbl">Категория</td>${cmpSteels.map(s=>`<td class="val">${s.cat}</td>`).join("")}</tr>`;
-                          h += `<tr><td class="lbl">Применение</td>${cmpSteels.map(s=>`<td style="font-size:9.5px">${generateApp(s)||s.app||"—"}</td>`).join("")}</tr>`;
+                          h += `<tr><td class="lbl">Применение</td>${cmpSteels.map(s=>`<td style="font-size:9.5px">${generateApp(s)||"—"}</td>`).join("")}</tr>`;
                           h += `<tr><td class="lbl">Продукция</td>${cmpSteels.map(s=>`<td class="val" style="font-size:9.5px">${(s.products||[]).join(", ")||"—"}</td>`).join("")}</tr>`;
 
                           // Chem
